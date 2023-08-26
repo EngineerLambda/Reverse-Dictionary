@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Reverse Dictionary App - Result</title>
+    <style>
+        body {
+            display: flex;
+            background-color: whitesmoke;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Free Sans", "JetBrains Mono";
+            font-weight: bold;
+        }
+        .container {
+            text-align: center;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            align-tracks: center;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid white;
+            color: black;
+        }
+        th {
+            background-color: #3498db;
+        }
+        h1{
+            color: black;
+        }
+        textarea {
+            width: 800px;
+            height: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reverse dictionary App by <a href="https://twitter.com/abdulsomad_me">EngineerLambda</a></h1>
+        <form method="post" action="/process">
+            <textarea name="input_text" placeholder="Enter your description here ..."></textarea><br>
+            <button class="submit-button" type="submit">What's the word?</button>
+        </form>
+        <h1>
+            Showing results for: "{{desc}}"
+        </h1>
+        <h2>The model sugests the following words as the best match to what you are looking for</h2>
+        <table>
+            {% for i in range(0, result|length, 4) %}
+            <tr>
+                <td>{{ result[i] }}</td>
+                <td>{{ result[i+1] }}</td>
+                <td>{{ result[i+2] }}</td>
+                <td>{{ result[i+3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

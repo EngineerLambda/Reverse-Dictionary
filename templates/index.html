@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <title>Reverse Dictionary App</title>
+    <style>
+        body {
+            display: flex;
+            background-color: whitesmoke;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Free Sans", "JetBrains Mono";
+            font-weight: bold;
+        }
+        .container {
+            text-align: center;
+        }
+        textarea {
+            width: 800px;
+            height: 30px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .submit-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #2980b9;
+        }
+        h1{
+            color: black;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reverse dictionary App by <a href="https://twitter.com/abdulsomad_me">EngineerLambda</a></h1>
+        <form method="post" action="/process">
+            <textarea name="input_text" placeholder="Enter your description here ..."></textarea><br>
+            <button class="submit-button" type="submit">What's the word?</button>
+        </form>
+    </div>
+</body>
+</html>
