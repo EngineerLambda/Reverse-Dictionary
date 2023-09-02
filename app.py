@@ -24,7 +24,7 @@ y = data["Word"]
 
 @app.route("/")
 def home():
-    return render_template("./resources/index.html")
+    return render_template("index.html")
 
 
 @app.route('/process', methods=['POST'])
@@ -33,7 +33,7 @@ def process():
     input_text = preprocess_text(input_text)
     result = preprocessing(input_text)
 
-    return render_template('./resources/result.html', result=result, desc=input_text)
+    return render_template('result.html', result=result, desc=input_text)
 
 
 def preprocessing(input_text):
@@ -45,11 +45,11 @@ def preprocessing(input_text):
 
     cosine_similarities = cosine_similarity(input_text_vec, descriptions_vec)
 
-    top_similar_word_indices = np.argsort(cosine_similarities[0])[-50:]
+    top_similar_word_indices = np.argsort(cosine_similarities[0])[-20:]
     most_similar_words = [y[i] for i in top_similar_word_indices]
 
     return most_similar_words
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run()
